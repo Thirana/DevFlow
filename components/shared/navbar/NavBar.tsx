@@ -2,6 +2,9 @@ import { SignedIn, UserButton } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import Theme from "./Theme";
+import MobileNav from "./MobileNav";
+import GlobalSearch from "../search/GlobalSearch";
 
 const NavBar = () => {
   return (
@@ -17,9 +20,9 @@ const NavBar = () => {
           Dev <span className="text-primary-500">Overflow</span>
         </p>
       </Link>
-      Global Search
+      <GlobalSearch />
       <div className="flex-between gap-5">
-        Theme
+        <Theme />
         {/* this cler component only render if user is signed in */}
         <SignedIn>
           <UserButton
@@ -34,6 +37,7 @@ const NavBar = () => {
             }}
           />
         </SignedIn>
+        <MobileNav />
       </div>
     </nav>
   );
