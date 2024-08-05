@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import Image from "next/image";
 
@@ -19,6 +21,7 @@ const GlobalSearch = () => {
           placeholder="Search globally"
           value=""
           className="no-focus paragraph-regular placeholder background-light800_darkgradient border-none shadow-none outline-none"
+          onChange={() => {}}
         />
       </div>
     </div>
