@@ -4,7 +4,7 @@
 
 @layer utilities {
   .background-light850_dark100 {
-    @apply bg-light-800 dark:bg-dark-100;
+    @apply bg-light-850 dark:bg-dark-100;
   }
 
   .text-light900_dark100 {
