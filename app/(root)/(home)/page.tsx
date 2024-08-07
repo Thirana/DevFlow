@@ -1,6 +1,10 @@
+import Filter from "@/components/shared/Filter";
 import LocalSearchBar from "@/components/shared/search/LocalSearchBar";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+
+import { HomePageFilters } from "@/constants/filters";
+import HomeFilters from "@/components/home/HomeFilters";
 
 // This home component is a childe for layout in (root) path
 export default function Home() {
@@ -22,7 +26,14 @@ export default function Home() {
           placeholder="Search for question"
           otherClasses="flex-1"
         />
+        {/* until md: breakpoint this will be shown. larger than md: breakpoint, this will be hidden */}
+        <Filter
+          filters={HomePageFilters}
+          otherClasses="min-h-[56px] sm:min-w-[170px]"
+          containerClasses="hidden max-md:flex "
+        />
       </div>
+      <HomeFilters />
     </>
   );
 }
