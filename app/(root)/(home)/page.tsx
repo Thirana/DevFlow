@@ -22,16 +22,16 @@ const questions = [
       picture: "https://example.com/picture1.jpg",
     },
     upvotes: ["user1", "user2"],
-    views: 100,
+    views: 15000000,
     answers: [
       {
         _id: "1",
         author: "user3",
         text: "TypeScript is a superset of JavaScript.",
-        createdAt: new Date("2023-01-01T10:30:00Z"),
+        createdAt: new Date("2024-07-01T10:30:00Z"),
       },
     ],
-    createdAt: new Date("2023-01-01T10:00:00Z"),
+    createdAt: new Date("2024-05-01T10:00:00Z"),
   },
   {
     _id: "2",
@@ -46,7 +46,7 @@ const questions = [
       picture: "https://example.com/picture2.jpg",
     },
     upvotes: ["user3", "user4"],
-    views: 200,
+    views: 200500,
     answers: [
       {
         _id: "2",
