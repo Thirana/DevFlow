@@ -1,6 +1,5 @@
 import Question from "@/components/forms/Question";
 import { getUserByID } from "@/lib/actions/user.action";
-import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 import React from "react";
 
@@ -13,7 +12,7 @@ const Page = async () => {
 
   const mongoUser = await getUserByID({ userId });
 
-  console.log(mongoUser);
+  // console.log(mongoUser);
 
   return (
     <div>

@@ -3,8 +3,32 @@
 import { connectToDatabase } from "../mongoose";
 import Question from "@/database/question.model";
 import Tag from "@/database/tag.model";
+import User from "@/database/user.model";
 
-export async function createQuestion(params: any) {
+import { GetQuestionsParams, CreateQuestionParams } from "./shared.types";
+import { revalidatePath } from "next/cache";
+
+// to get questions from DB
+export async function getQuestions(params: GetQuestionsParams) {
+  try {
+    connectToDatabase();
+
+    // retrieves all documents in the Question collection
+    const questions = await Question.find({})
+      // 'populate' is a Mongoose method that replaces specified fields in the documents with documents from other collections.
+      .populate({ path: "tags", model: Tag })
+      .populate({ path: "author", model: User })
+      .sort({ createdAt: -1 });
+
+    return { questions };
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+}
+
+// to create a question document in DB
+export async function createQuestion(params: CreateQuestionParams) {
   try {
     connectToDatabase();
 
@@ -44,5 +68,9 @@ export async function createQuestion(params: any) {
       // $each: This operator is used with $push to add multiple elements to the array
       $push: { tags: { $each: tagDocuments } },
     });
+
+    // re-validating a specific path
+    // this helps to reload the home page when after we adding quetion
+    revalidatePath(path);
   } catch (error) {}
 }
