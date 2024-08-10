@@ -22,13 +22,21 @@ import { Input } from "@/components/ui/input";
 import { Badge } from "../ui/badge";
 import Image from "next/image";
 import { createQuestion } from "@/lib/actions/question.action";
+import { useRouter, usePathname } from "next/navigation";
 
 const type: any = "create";
 
+interface Props {
+  mongoUserId: string;
+}
+
 // starting of the component
-const Question = () => {
+const Question = ({ mongoUserId }: Props) => {
   const editorRef = useRef(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const router = useRouter();
+  const pathname = usePathname();
 
   // Form Blue print (strucutre)
   const form = useForm<z.infer<typeof QuestionsSchema>>({
@@ -46,9 +54,16 @@ const Question = () => {
 
     try {
       // make async call to your API -> create question
-      await createQuestion({});
       // contain all form data
+      await createQuestion({
+        title: values.title,
+        content: values.explanation,
+        tags: values.tags,
+        author: JSON.parse(mongoUserId),
+      });
+
       // navigate to home page
+      router.push("/");
     } catch (error) {
       // handle errors
     } finally {
