@@ -63,7 +63,7 @@ export default async function Home() {
           <NoResult
             title="There is no questions to show"
             description="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minima praesentium quibusdam recusandae minus, et rem, delectus aliquam laborum voluptatum hic odio nobis, enim molestias?"
-            link="/ake-question"
+            link="/ask-question"
             linkTitle="Ask a Question"
           />
         )}
